@@ -1,0 +1,20 @@
+version: '2'
+
+networks:
+  diplo_network:
+    external:
+      name: nginxproxynetwork
+
+services:
+  ecodices:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: diplo_app
+    restart: always
+    environment:
+      - VIRTUAL_HOST=diplo.sd.di.huc.knaw.nl
+    volumes:
+      - /home/robz/:/home
+    networks:
+      - diplo_network
