@@ -90,12 +90,12 @@ function Search() {
     }
 
     const resetFacets: IResetFacets = () => {
-        searchBuffer = searchStruc;
-        searchBuffer.page = 1;
+        //searchBuffer = searchStruc;
+        //searchBuffer.page = 1;
         searchBuffer.searchvalues = [];
         setSearchStruc(searchBuffer);
-        navigate('#search/' + Base64.toBase64(JSON.stringify(searchStruc)));
-        window.scroll(0, 0);
+        navigate('/search/' + Base64.toBase64(JSON.stringify(searchBuffer)));
+        //window.scroll(0, 0);
         setRefresh(!refresh);
     }
 
@@ -108,8 +108,8 @@ function Search() {
                 values: [candidate.candidate]
             } as ISearchValues];
             parameters.page = 1;
+            searchBuffer.searchvalues = parameters.searchvalues;
             setSearchStruc(searchBuffer);
-            window.location.href = '#search/' + Base64.toBase64(JSON.stringify(searchStruc));
         } else {
             if (typeof parameters.searchvalues === "object") {
                 let found: boolean = false;
@@ -129,9 +129,11 @@ function Search() {
                     });
                 }
             }
-            searchStruc.page = 1;
+            searchBuffer.searchvalues = parameters.searchvalues;
+            setSearchStruc(searchBuffer);
         }
-        goToPage(page);
+        navigate('/search/' + Base64.toBase64(JSON.stringify(searchBuffer)));
+        console.log(searchBuffer);
         window.scroll(0, 0);
         setRefresh(!refresh);
     }

@@ -16,7 +16,7 @@ function ManuscriptListDetails(props: {result: IResultItem}) {
         return 0;
     }
     let roles: IRol[] = props.result.rol;
-    roles.sort(compare);
+    //roles.sort(compare);
 
     return (<div className="hcResultListDetail">
         <h2>{props.result.titel}</h2>
