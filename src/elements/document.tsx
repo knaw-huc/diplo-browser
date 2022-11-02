@@ -22,10 +22,10 @@ function Document(props: {item: IResultItem}) {
         <div className="ecoDetailTable">
             <div className="ecoDetailRow">
                 <div className="ecoLabelCell">
-                    Naam
+                    Titel
                 </div>
                 <div className="ecoCell">
-                    {props.item.naam}
+                    {props.item.titel}
                 </div>
             </div>
         </div>

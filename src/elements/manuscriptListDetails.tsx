@@ -15,14 +15,11 @@ function ManuscriptListDetails(props: {result: IResultItem}) {
         }
         return 0;
     }
-    let roles: IRol[] = props.result.rol;
+    //let roles: IRol[] = props.result.rol;
     //roles.sort(compare);
 
     return (<div className="hcResultListDetail">
         <h2>{props.result.titel}</h2>
-        <div className="detailLine">{roles.map((item, index) => {
-            return (<div className="rolItem">{item.rol}</div>)
-        })}</div>
         <div className="detailLine"><strong>Ingevoerd op: 01/11/2021</strong></div>
         <div>
             <ul className="ManuscriptListBtns">

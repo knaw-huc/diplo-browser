@@ -15,11 +15,11 @@ function Detail() {
     let navigate = useNavigate();
     const dummy: IResultItem = {
         _id: "",
-        locatie: [],
-        naam: "",
-        onderwerp: [],
-        organisatie: [],
-        rol: [],
+//        locatie: [],
+        telefoon: "",
+//        onderwerp: [],
+//        organisatie: [],
+//        rol: [],
         titel: "'"
     }
     const params = useParams();
@@ -28,6 +28,7 @@ function Detail() {
     const [data, setData] = useState<IResultItem>(dummy);
     document.title = "Item | Diplomatieke Getuigenissen";
 
+    /*
     async function fetch_data() {
         const url = SERVICE + "/item?id=" + id;
         const response = await fetch(url);
@@ -36,7 +37,17 @@ function Detail() {
             setData(json as IResultItem);
             setLoading(false);
         }
+    }
+    */
 
+    async function fetch_data() {
+        const url = SERVICE + "/detail?rec=1";
+        const response = await fetch(url);
+        const json: IResultItem = await response.json();
+        if (json.titel !== undefined) {
+            setData(json as IResultItem);
+            setLoading(false);
+        }
     }
 
     function goSearch(label: string, field: string, facetValue: string) {
@@ -71,66 +82,18 @@ function Detail() {
                     <div className="ecoDetailTable">
                         <div className="ecoDetailRow">
                             <div className="ecoLabelCell">
-                                Naam
+                                Titel
                             </div>
                             <div className="ecoCell">
-                                {data.naam}
+                                {data.titel}
                             </div>
                         </div>
                         <div className="ecoDetailRow">
                             <div className="ecoLabelCell">
-                                Organisatie
+                                Telefoon
                             </div>
                             <div className="ecoCell">
-                                {data.organisatie.map((item, index) => {
-                                    if (index === 0) {
-                                        return (<Fragment><div className="diploLink" onClick={() => {goSearch('Organisatie', 'organisatie.organisatie', item.organisatie)}}>{item.organisatie}</div></Fragment>)
-                                    } else {
-                                        return (<Fragment>; <div className="diploLink" onClick={() => {goSearch('Organisatie', 'organisatie.organisatie', item.organisatie)}}>{item.organisatie}</div></Fragment>)
-                                    }
-                                })}
-                            </div>
-                        </div>
-                        <div className="ecoDetailRow">
-                            <div className="ecoLabelCell">
-                                Locatie
-                            </div>
-                            <div className="ecoCell">
-                                {data.locatie.map((item, index) => {
-                                    if (index === 0) {
-                                        return (<Fragment><div className="diploLink" onClick={() => {goSearch('Locatie', 'locatie.locatie', item.locatie)}}>{item.locatie}</div></Fragment>)
-                                    } else {
-                                        return (<Fragment>; <div className="diploLink" onClick={() => {goSearch('Locatie', 'locatie.locatie', item.locatie)}}>{item.locatie}</div></Fragment>)
-                                    }
-                                })}
-                            </div>
-                        </div>
-                        <div className="ecoDetailRow">
-                            <div className="ecoLabelCell">
-                                Rol
-                            </div>
-                            <div className="ecoCell">
-                                {data.rol.map((item, index) => {
-                                    if (index === 0) {
-                                        return (<Fragment><div className="diploLink" onClick={() => {goSearch('Rol', 'rol.rol', item.rol)}}>{item.rol}</div></Fragment>)
-                                    } else {
-                                        return (<Fragment>; <div className="diploLink" onClick={() => {goSearch('Rol', 'rol.rol', item.rol)}}>{item.rol}</div></Fragment>)
-                                    }
-                                })}
-                            </div>
-                        </div>
-                        <div className="ecoDetailRow">
-                            <div className="ecoLabelCell">
-                                Onderwerp
-                            </div>
-                            <div className="ecoCell">
-                                {data.onderwerp.map((item, index) => {
-                                    if (index === 0) {
-                                        return (<Fragment><div className="diploLink" onClick={() => {goSearch('Onderwerp', 'onderwerp.onderwerp', item.onderwerp)}}>{item.onderwerp}</div></Fragment>)
-                                    } else {
-                                        return (<Fragment>; <div className="diploLink" onClick={() => {goSearch('Onderwerp', 'onderwerp.onderwerp', item.onderwerp)}}>{item.onderwerp}</div></Fragment>)
-                                    }
-                                })}
+                                {data.telefoon}
                             </div>
                         </div>
                     </div>

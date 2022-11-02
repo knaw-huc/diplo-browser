@@ -2,19 +2,21 @@ version: '2'
 
 networks:
   diplo_network:
-    external:
-      name: nginxproxynetwork
+    #external:
+    #  name: nginxproxynetwork
+    external: false
 
 services:
-  ecodices:
+  diplo_app:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: diplo_app
     restart: always
     environment:
       - VIRTUAL_HOST=diplo.sd.di.huc.knaw.nl
     volumes:
-      - /home/robz/:/home
+      - ./data:/data
     networks:
       - diplo_network
+    ports:
+      - 80:80
