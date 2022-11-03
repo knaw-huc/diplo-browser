@@ -25,7 +25,7 @@ function ManuscriptListDetails(props: {result: IResultItem}) {
             <ul className="ManuscriptListBtns">
                 <li onClick={() => {
                     window.scroll(0, 0);
-                    navigate('/detail/' + props.result._id)}
+                    navigate('/detail/' + props.result.record)}
                 }>Details</li>
             </ul>
         </div>

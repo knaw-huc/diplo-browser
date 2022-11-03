@@ -36,9 +36,9 @@ export interface IRemoveFacet {
     (field: string, value: string): void
 }
 
-/*
+
 export interface IResultItem {
-    _id?: string,
+    record: string,
     locatie: ILocatie[],
     naam: string,
     onderwerp: IOnderwerp[],
@@ -46,15 +46,28 @@ export interface IResultItem {
     rol: IRol[],
     titel: string
 }
-*/
+export interface IDetailItem {
+    _id?: string,
+    locaties: ILocatie[],
+    opnamedata: iOpnameDatum[],
+    titel: string,
+    naam_titel: string,
+    naam_voornaam: string,
+    naam_tussenvoegsel: string,
+    naam_achternaam: string
+}
 
 export interface IResultItem {
-    _id?: string,
+    record: string,
     titel: string,
     telefoon: string
 }
 export interface ILocatie {
     locatie: string
+}
+
+export interface iOpnameDatum {
+    opnamedatum: string
 }
 
 export interface IOnderwerp {

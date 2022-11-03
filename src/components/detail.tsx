@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 import {Fragment} from "react";
 import img from "../assets/img/M0004.jpg";
 import {HOME, SERVICE} from "../misc/config";
-import {IResultItem, IResultList, ICollection_item, ISearchObject} from "../misc/interfaces";
+import {IResultItem, IDetailItem, IResultList, ICollection_item, ISearchObject, ILocatie, iOpnameDatum} from "../misc/interfaces";
 import Document from "../elements/document";
 import Bibliography from "../elements/bibliography";
 import Annotations from "../elements/annotations";
@@ -13,19 +13,20 @@ import {Base64} from "js-base64";
 
 function Detail() {
     let navigate = useNavigate();
-    const dummy: IResultItem = {
+    const dummy: IDetailItem = {
         _id: "",
-//        locatie: [],
-        telefoon: "",
-//        onderwerp: [],
-//        organisatie: [],
-//        rol: [],
+        naam_titel: "",
+        naam_voornaam: "",
+        naam_tussenvoegsel: "",
+        naam_achternaam: "",
+        locaties:  [],
+        opnamedata: [],
         titel: "'"
     }
     const params = useParams();
     const id = params.id as String;
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState<IResultItem>(dummy);
+    const [data, setData] = useState<IDetailItem>(dummy);
     document.title = "Item | Diplomatieke Getuigenissen";
 
     /*
@@ -41,11 +42,11 @@ function Detail() {
     */
 
     async function fetch_data() {
-        const url = SERVICE + "/detail?rec=1";
+        const url = SERVICE + "/detail?rec=" + id;
         const response = await fetch(url);
-        const json: IResultItem = await response.json();
+        const json: IDetailItem = await response.json();
         if (json.titel !== undefined) {
-            setData(json as IResultItem);
+            setData(json as IDetailItem);
             setLoading(false);
         }
     }
@@ -82,18 +83,39 @@ function Detail() {
                     <div className="ecoDetailTable">
                         <div className="ecoDetailRow">
                             <div className="ecoLabelCell">
-                                Titel
+                                Naam
                             </div>
                             <div className="ecoCell">
-                                {data.titel}
+                                {data.naam_titel} {data.naam_voornaam} {data.naam_tussenvoegsel} {data.naam_achternaam}
                             </div>
                         </div>
                         <div className="ecoDetailRow">
                             <div className="ecoLabelCell">
-                                Telefoon
+                                Loopbaan
                             </div>
                             <div className="ecoCell">
-                                {data.telefoon}
+                                <ol>
+                                {data.locaties.map((item: ILocatie, index: number) => {
+                                    return (
+                                 <li key={index}>{item.locatie}</li>
+                            )
+                            })}
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div className="ecoDetailRow">
+                            <div className="ecoLabelCell">
+                                Interviewsessie datum
+                            </div>
+                            <div className="ecoCell">
+                                <ul>
+                                {data.opnamedata.map((item: iOpnameDatum, index: number) => {
+                                    return (
+                                 <li key={index}>{item.opnamedatum}</li>
+                            )
+                            })}
+                                </ul>
                             </div>
                         </div>
                     </div>
