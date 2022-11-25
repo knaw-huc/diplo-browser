@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 import {Fragment} from "react";
 import img from "../assets/img/M0004.jpg";
 import {HOME, SERVICE} from "../misc/config";
-import {IResultItem, IDetailItem, IResultList, ICollection_item, ISearchObject, ILocatie, iOpnameDatum} from "../misc/interfaces";
+import {IResultItem, IDetailItem, IResultList, ICollection_item, ISearchObject, ILocatie, iOpnameDatum, iStationering} from "../misc/interfaces";
 import Document from "../elements/document";
 import Bibliography from "../elements/bibliography";
 import Annotations from "../elements/annotations";
@@ -21,6 +21,7 @@ function Detail() {
         naam_achternaam: "",
         locaties:  [],
         opnamedata: [],
+        stationeringen: [],
         titel: "'"
     }
     const params = useParams();
@@ -64,6 +65,12 @@ function Detail() {
     useEffect(() => {
         fetch_data();
     }, [loading]);
+    console.log('hee' + data.stationeringen);
+    let x  = data.stationeringen[6];
+    // console.log('x', typeof x, x, x['titel']);
+    console.log('x', typeof x, x);
+
+    // console.log(x.locatie);
 
     return (
 
@@ -93,11 +100,22 @@ function Detail() {
                             <div className="ecoLabelCell">
                                 Loopbaan
                             </div>
-                            <div className="ecoCell">
+                            {/* <div className="ecoCell">
                                 <ol>
                                 {data.locaties.map((item: ILocatie, index: number) => {
                                     return (
                                  <li key={index}>{item.locatie}</li>
+                            )
+                            })}
+                                </ol>
+                            </div> */}
+                            <div className="ecoCell">
+                                <ol>
+                                {data.stationeringen.map((item: iStationering, index: number) => {
+                                    console.log('i' +index, item);
+                                    console.log(item.Organisatie);
+                                    return (
+                                    <li key={index}> {item.Titel} {item.Locatie} {item.Organisatie}, PERIODE </li>
                             )
                             })}
                                 </ol>

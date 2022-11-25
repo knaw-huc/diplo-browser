@@ -45,13 +45,18 @@ export interface IResultItem {
     organisatie: IOrganisatie[],
     rol: IRol[],
     titel: string,
-    titel_en: string
+    titel_en: string,
+    stationeringen: iStationering[]
 
 }
+
+
+
 export interface IDetailItem {
     _id?: string,
     locaties: ILocatie[],
     opnamedata: iOpnameDatum[],
+    stationeringen: iStationering[],
     titel: string,
     naam_titel: string,
     naam_voornaam: string,
@@ -64,6 +69,15 @@ export interface IDetailItem {
 //     titel: string,
 //     telefoon: string
 // }
+
+export interface iStationering {
+    Organisatie: string,
+    Locatie: string,    
+    Titel: string,
+    Type: string,
+    Periode: any
+}
+
 export interface ILocatie {
     locatie: string
 }
