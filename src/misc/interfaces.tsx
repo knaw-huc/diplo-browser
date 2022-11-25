@@ -44,7 +44,9 @@ export interface IResultItem {
     onderwerp: IOnderwerp[],
     organisatie: IOrganisatie[],
     rol: IRol[],
-    titel: string
+    titel: string,
+    titel_en: string
+
 }
 export interface IDetailItem {
     _id?: string,
@@ -57,11 +59,11 @@ export interface IDetailItem {
     naam_achternaam: string
 }
 
-export interface IResultItem {
-    record: string,
-    titel: string,
-    telefoon: string
-}
+// export interface IResultItem {
+//     record: string,
+//     titel: string,
+//     telefoon: string
+// }
 export interface ILocatie {
     locatie: string
 }

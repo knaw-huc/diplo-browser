@@ -20,7 +20,9 @@ function ManuscriptListDetails(props: {result: IResultItem}) {
 
     return (<div className="hcResultListDetail">
         <h2>{props.result.titel}</h2>
-        <div className="detailLine"><strong>Ingevoerd op: 01/11/2021</strong></div>
+        <h2>en: {props.result.titel_en}</h2>
+
+        <div className="detailLine"><strong>{props.result.record} Ingevoerd op: 01/11/2021</strong></div>
         <div>
             <ul className="ManuscriptListBtns">
                 <li onClick={() => {
