@@ -157,7 +157,15 @@ function Detail() {
                                             </div>                                  
                                             <div  className="ecoDetailRow">
                                                 <div className="ecoLabelCell">Inhoud</div>
-                                                <div className="ecoCell">Lijst van Topics</div>
+                                                <div className="ecoCell">
+                                                <ul>
+                                                    {item.Inhoud.map((item: any, index: any) => {
+                                                        return (
+                                                                <li key={index}>{item.onderwerp} <i>=&gt;:</i> <a href="video.php?={item.tijdstip}"> {item.tijdstip}</a></li>
+                                                        )
+                                                    })}
+                                                    </ul>
+                                               </div>
                                             </div>                                  
                                         </Fragment>
                             )
