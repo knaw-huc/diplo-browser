@@ -161,7 +161,9 @@ function Detail() {
                                                 <ul>
                                                     {item.Inhoud.map((item: any, index: any) => {
                                                         return (
-                                                                <li key={index}>{item.onderwerp} <i>=&gt;:</i> <a href="video.php?={item.tijdstip}"> {item.tijdstip}</a></li>
+                                                                <li key={index}>{item.onderwerp} <i>=&gt;:</i> <a href="video.php?stamp=${item.tijdstip}"> {item.tijdstip}</a></li>
+                                                                // <li key={index}>{item.onderwerp} <i>=&gt;:</i> <a href="video.php?stamp=${item.tijdstip}"> {item.tijdstip}</a></li>
+
                                                         )
                                                     })}
                                                     </ul>
