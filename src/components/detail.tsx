@@ -115,7 +115,13 @@ function Detail() {
                                     console.log('i' +index, item);
                                     console.log(item.Organisatie);
                                     return (
-                                    <li key={index}> {item.Titel} {item.Locatie} {item.Organisatie}, PERIODE </li>
+                                    <li key={index}> {item.Titel} {item.Locatie} {item.Organisatie}, {item.Periode.Van} - {item.Periode.Tot}
+                                    
+                                    {/* {item.Periode.map((i:any, index:any)=>{
+                                        return <span key={index}>{i.van}</span>
+
+                                    })} */}
+                                    </li>
                             )
                             })}
                                 </ol>

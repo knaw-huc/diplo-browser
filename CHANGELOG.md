@@ -1,5 +1,10 @@
 # CHANGELOG
 
+
+## 28-11-2022
+
+- added periode (van tot) in frontend
+
 ## 25-11-2022
 
 - solved annoying "bug" (actually a misunderstanding of TypeScript/React, no error when object element does noet exist in JSX
