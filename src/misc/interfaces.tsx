@@ -57,6 +57,7 @@ export interface IDetailItem {
     locaties: ILocatie[],
     opnamedata: iOpnameDatum[],
     stationeringen: iStationering[],
+    interviewsessies: any,    
     titel: string,
     titel_en: string,
 

@@ -22,6 +22,7 @@ function Detail() {
         locaties:  [],
         opnamedata: [],
         stationeringen: [],
+        interviewsessies: [],
         titel: "'",
         titel_en: "'"        
     }
@@ -131,7 +132,40 @@ function Detail() {
                             </div>
                         </div>
 
+                        {data.interviewsessies.map((item: any, index: any) => {
+                                    return (
+                                        <Fragment key={index}>
+                                            <div  className="ecoDetailRow">
+                                                <div className="ecoLabelCell"><hr></hr></div>
+                                                <div className="ecoCell"><hr></hr></div> 
+                                            </div> 
+                                            <div  className="ecoDetailRow">
+                                                <div className="ecoLabelCell">Interviewsessie</div>
+                                                <div className="ecoCell">{item.Volgorde}</div> 
+                                            </div>                                  
+                                            <div  className="ecoDetailRow">
+                                                <div className="ecoLabelCell">Datum</div>
+                                                <div className="ecoCell">{item.Opnamedatum}</div>                                   
+                                            </div>                                  
+                                            <div  className="ecoDetailRow">
+                                                <div className="ecoLabelCell">Duur</div>
+                                                <div className="ecoCell">{item.Duur}</div>
+                                            </div>                                  
+                                            <div  className="ecoDetailRow">
+                                                <div className="ecoLabelCell"></div>
+                                                <div className="ecoCell">VIDEOSTILL <br></br>KLIKBAAR</div>
+                                            </div>                                  
+                                            <div  className="ecoDetailRow">
+                                                <div className="ecoLabelCell">Inhoud</div>
+                                                <div className="ecoCell">Lijst van Topics</div>
+                                            </div>                                  
+                                        </Fragment>
+                            )
+                            })}
+                        
+
                         <div className="ecoDetailRow">
+                            
                             <div className="ecoLabelCell">
                                 Interviewsessie datum
                             </div>
@@ -146,6 +180,10 @@ function Detail() {
                             </div>
                         </div>
                     </div>
+
+
+
+
                 </div>)}
             </div>
         </div>
