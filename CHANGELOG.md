@@ -3,6 +3,7 @@
 
 ## 28-11-2022
 
+- added Interview sessions
 - added Titel in detail pagina, also adapted type
 - added periode (van tot) in detail pagina
 
