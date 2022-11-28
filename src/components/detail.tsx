@@ -22,7 +22,8 @@ function Detail() {
         locaties:  [],
         opnamedata: [],
         stationeringen: [],
-        titel: "'"
+        titel: "'",
+        titel_en: "'"        
     }
     const params = useParams();
     const id = params.id as String;
@@ -87,6 +88,8 @@ function Detail() {
                     <div>Loading</div>
                 ) : (<div>
                     <h3 className="detailH3">{data.titel}</h3>
+                    <h3 className="detailH3">{data.titel_en}</h3>
+
                     <div className="ecoDetailTable">
                         <div className="ecoDetailRow">
                             <div className="ecoLabelCell">

@@ -58,6 +58,8 @@ export interface IDetailItem {
     opnamedata: iOpnameDatum[],
     stationeringen: iStationering[],
     titel: string,
+    titel_en: string,
+
     naam_titel: string,
     naam_voornaam: string,
     naam_tussenvoegsel: string,

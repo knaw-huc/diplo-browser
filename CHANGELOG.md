@@ -3,7 +3,8 @@
 
 ## 28-11-2022
 
-- added periode (van tot) in frontend
+- added Titel in detail pagina, also adapted type
+- added periode (van tot) in detail pagina
 
 ## 25-11-2022
 
