@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2-12-2022
+
+- react-player experiment
+- look into router
 
 ## 28-11-2022
 
@@ -14,6 +18,6 @@
 - investigation
 - branch dev
 
-## 24-11-2019
+## 24-11-2022
 
 - troubleshooting titles
