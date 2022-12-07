@@ -2,7 +2,7 @@ import React from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import {useState, useEffect} from "react";
 import {Fragment} from "react";
-import img from "../assets/img/M0004.jpg";
+// import img from "../assets/img/M0004.jpg";
 import {HOME, SERVICE} from "../misc/config";
 import {IResultItem, IDetailItem, IResultList, ICollection_item, ISearchObject, ILocatie, iOpnameDatum, iStationering} from "../misc/interfaces";
 import Document from "../elements/document";
@@ -10,15 +10,31 @@ import Bibliography from "../elements/bibliography";
 import Annotations from "../elements/annotations";
 import {Base64} from "js-base64";
 import ReactPlayer from 'react-player/youtube'
+// import videootje from 'test.mp4'
+
 
 // Only loads the YouTube player
 
 function Video() {
     console.log('video');
+    const [videoFilePath, setVideoFilePath] = useState(null);
     return (
         <div className="hcContentContainer">
         <h1>video</h1>
-        <ReactPlayer url='https://www.youtube.com/watch?v=1DYqguN0H70' />
+        {/* <ReactPlayer 
+        playing 
+        url='https://www.youtube.com/watch?v=1DYqguN0H70'
+        
+        /> */}
+
+        <ReactPlayer 
+        url='test.mp4'
+        />
+
+
+
+
+
         </div>
     )
 }

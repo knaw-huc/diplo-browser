@@ -7,7 +7,7 @@ import Collections from "./components/collections";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import Detail from "./components/detail";
-import Video from "./components/video";
+// import Video from "./components/video";
 
 
 const root = ReactDOM.createRoot(
@@ -24,9 +24,7 @@ root.render(
                 <Route path="detail" element={<Detail/>}>
                     <Route path=":id" element={<Detail/>}/>
                 </Route>
-                <Route path="video" element={<Video/>}>
-                    <Route path=":id" element={<Video/>}/>
-                </Route>
+                
             </Route>
         </Routes>
     </BrowserRouter>
