@@ -1,16 +1,6 @@
 import React from "react";
-import {useParams, useNavigate} from "react-router-dom";
+import {useParams, useNavigate, Link} from "react-router-dom";
 import {useState, useEffect} from "react";
-import {
-    ISendCandidate,
-    IFacetCandidate,
-    ISearchObject,
-    ISearchValues,
-    ISendPage,
-    IResetFacets,
-    IResultList,
-    IRemoveFacet
-} from "../misc/interfaces";
 import {Base64} from "js-base64";
 import FreeTextFacet from "../facets/freeTextFacet";
 import ListFacet from "../facets/listFacet";
@@ -22,26 +12,27 @@ import {Fragment} from "react";
 
 function Search() {
     const params = useParams();
-    const parameters: ISearchObject = JSON.parse(Base64.decode(params.code as string));
+    const parameters = JSON.parse(Base64.decode(params.code));
+    console.log('parameters', parameters);
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(parameters.page);
     const [refresh, setRefresh] = useState(true);
-    const [result, setResult] = useState<IResultList>({amount: 0, pages: 0, items: []});
+    const [result, setResult] = useState({amount: 0, pages: 0, items: []});
     const [numberOfItems, setNumberOfItems] = useState(0);
     let navigate = useNavigate();
     document.title = "Search | Diplomatieke Getuigenissen";
 
-    let searchBuffer: ISearchObject = {
+    let searchBuffer = {
         searchvalues: parameters.searchvalues,
         page: page,
         page_length: 500,
-        sortorder: "titel",
+        sortorder: "naam",
     };
 
     let facets = parameters.searchvalues;
 
     const [searchStruc, setSearchStruc] = useState(searchBuffer);
-    const cross: string = "[x]";
+    const cross = "[x]";
 
     async function fetch_data() {
         const url = SERVICE + "/browse";
@@ -54,13 +45,13 @@ function Search() {
             },
             body: JSON.stringify(searchStruc)
         });
-        const json: IResultList = await response.json();
+        const json= await response.json();
         setResult(json);
         setNumberOfItems(json.amount);
         setLoading(false);
     }
 
-    const goToPage: ISendPage = (page: number) => {
+    const goToPage = (page) => {
         searchBuffer.page = page;
         setSearchStruc(searchBuffer);
         setRefresh(!refresh);
@@ -68,10 +59,10 @@ function Search() {
         window.scroll(0, 0);
     }
 
-    const removeFacet: IRemoveFacet = (field: string, value: string) => {
+    const removeFacet = (field, value) => {
         searchBuffer = searchStruc;
         if (typeof searchBuffer.searchvalues === "object") {
-            searchBuffer.searchvalues.forEach((item: ISearchValues) => {
+            searchBuffer.searchvalues.forEach((item) => {
                 if (item.name === field) {
                     item.values = item.values.filter((element => element !== value));
                 }
@@ -89,7 +80,7 @@ function Search() {
         window.scroll(0, 0);
     }
 
-    const resetFacets: IResetFacets = () => {
+    const resetFacets = () => {
         //searchBuffer = searchStruc;
         //searchBuffer.page = 1;
         searchBuffer.searchvalues = [];
@@ -99,20 +90,20 @@ function Search() {
         setRefresh(!refresh);
     }
 
-    const sendCandidate: ISendCandidate = (candidate: IFacetCandidate) => {
+    const sendCandidate= (candidate) => {
         setPage(1);
         if (parameters.searchvalues.length === 0) {
             parameters.searchvalues = [{
                 name: candidate.facet,
                 field: candidate.field,
                 values: [candidate.candidate]
-            } as ISearchValues];
+            }];
             parameters.page = 1;
             searchBuffer.searchvalues = parameters.searchvalues;
             setSearchStruc(searchBuffer);
         } else {
             if (typeof parameters.searchvalues === "object") {
-                let found: boolean = false;
+                let found = false;
                 parameters.searchvalues.forEach((item) => {
                     if (item.name === candidate.facet) {
                         found = true;
@@ -149,6 +140,7 @@ function Search() {
             </div>
             <div className="hcLayoutFacet-Result hcBasicSideMargin hcMarginBottom15">
                 <div className="hcLayoutFacets">
+                    <Link to="../test/">Full Text search</Link>
                     <FreeTextFacet add={sendCandidate}/>
                     <ListFacet parentCallback={sendCandidate} name="Naam" field="naam"/>
                     <ListFacet parentCallback={sendCandidate} name="Locatie" field="locatie.locatie"/>
@@ -168,7 +160,7 @@ function Search() {
                             <Fragment><span className="hcSelectedFacet"><span
                                 className="hcSelectedFacetType">None</span></span></Fragment>
                         ) : (
-                            facets.map((item: ISearchValues) => {
+                            facets.map((item) => {
                                 return (
                                     <span className="hcSelectedFacet"><span
                                         className="hcSelectedFacetType">{item.name}: </span>

@@ -1,12 +1,13 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import {IResultItem, IRol} from "../misc/interfaces";
+// import {IResultItem, IRol} from "../misc/interfaces";
 import img from "../assets/img/manuscript.jpg";
+import Titelhack from "../components/titelhack";
 
-function ManuscriptListDetails(props: {result: IResultItem}) {
+function ManuscriptListDetails(props) {
     let navigate = useNavigate();
 
-    function compare( a: IRol, b: IRol ) {
+    function compare( a, b ) {
         if ( a.rol < b.rol ){
             return -1;
         }
@@ -19,9 +20,8 @@ function ManuscriptListDetails(props: {result: IResultItem}) {
     //roles.sort(compare);
 
     return (<div className="hcResultListDetail">
-        <h2>{props.result.titel}</h2>
-        <h2>en: {props.result.titel_en}</h2>
-
+  
+        <Titelhack titel={props.result.titel} titel_en={props.result.titel_en} />
         <div className="detailLine"><strong>{props.result.record} Ingevoerd op: 01/11/2021</strong></div>
         <div>
             <ul className="ManuscriptListBtns">

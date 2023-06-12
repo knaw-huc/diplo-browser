@@ -1,11 +1,11 @@
 import React from "react";
 import {Fragment} from "react";
-import {IFacetValue, ISendCandidate} from "../misc/interfaces";
+// import {IFacetValue, ISendCandidate} from "../misc/interfaces";
 import {useState, useEffect} from "react";
 import {SERVICE} from "../misc/config";
 
-function CenturyFacet(props: {parentCallback: ISendCandidate, name: string, field: string}) {
-    const [data, setData] = useState<IFacetValue[]>([]);
+function CenturyFacet(props) {
+    const [data, setData] = useState([]);
     const [url, setUrl] = useState(SERVICE + "/facet?name=" + props.field + "&amount=20");
     const [help, setHelp] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ function CenturyFacet(props: {parentCallback: ISendCandidate, name: string, fiel
         setLoading(false);
     }
 
-    function sendCandidate(value: string) {
+    function sendCandidate(value) {
         props.parentCallback({facet: props.name, field: props.field, candidate: value});
     }
 

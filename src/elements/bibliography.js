@@ -1,7 +1,7 @@
 import React from "react";
-import {IResultItem} from "../misc/interfaces";
+// import {IResultItem} from "../misc/interfaces";
 
-function Bibliography(props: {item: IResultItem}) {
+function Bibliography(props) {
     return (<div>
         <h4>Bibliography</h4>
     </div>)

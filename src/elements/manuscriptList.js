@@ -1,12 +1,14 @@
 import React from "react";
-import {IResultList, IResultItem} from "../misc/interfaces";
+// import {IResultList, IResultItem} from "../misc/interfaces";
 import ManuscriptListDetails from "./manuscriptListDetails";
 
-function ManuscriptList(props: {result: IResultList}) {
+function ManuscriptList(props) {
+    console.log('items in ManuscriptList: ' + props.result.items );
+
     console.log('resultaatlijst: ' + props.result.items );
     return (
         <div>
-        {props.result.items.map((item: IResultItem, index: number) => {
+        {props.result.items.map((item, index) => {
             console.log('resultitem: ' + item + index );
 
             return (

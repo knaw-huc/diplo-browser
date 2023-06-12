@@ -1,11 +1,11 @@
 import React from "react";
 import {Fragment} from "react";
-import {IFacetValue, ISendCandidate} from "../misc/interfaces";
+// import {IFacetValue, ISendCandidate} from "../misc/interfaces";
 import {useState, useEffect} from "react";
-import {SERVICE} from "../misc/config";
+import {HOME, SERVICE} from "../misc/config";
 
-function ListFacet(props: {parentCallback: ISendCandidate, name: string, field: string}) {
-    const [data, setData] = useState<IFacetValue[]>([]);
+function ListFacet(props) {
+    const [data, setData] = useState([]);
     const [url, setUrl] = useState(SERVICE + "/facet?name=" + props.field + "&amount=10");
     const [help, setHelp] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -14,13 +14,25 @@ function ListFacet(props: {parentCallback: ISendCandidate, name: string, field: 
 
 
     async function fetchData() {
-        const response = await fetch(url);
+        // const response = await fetch(url);
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                
+                'Origin': HOME
+            },
+            // body: JSON.stringify(searchStruc)
+        });
+
+
+
+
         const json = await response.json();
         setData(json);
         setLoading(false);
     }
 
-    function sendCandidate(value: string) {
+    function sendCandidate(value) {
         props.parentCallback({facet: props.name, field: props.field, candidate: value});
     }
 

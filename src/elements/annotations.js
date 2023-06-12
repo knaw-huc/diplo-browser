@@ -1,7 +1,7 @@
 import React from "react";
-import {IResultItem} from "../misc/interfaces";
+// import {IResultItem} from "../misc/interfaces";
 
-function Annotations(props: {item: IResultItem}) {
+function Annotations(props) {
     return (<div>
         <h4>Annotations</h4>
     </div>)

@@ -1,16 +1,16 @@
 import React from "react";
-import {ISendCandidate} from "../misc/interfaces";
+// import {ISendCandidate} from "../misc/interfaces";
 import {useState, useEffect} from "react";
 
-function FreeTextFacet(props: {add: ISendCandidate}) {
-    const [textField, setTextField] = useState<string>("");
+function FreeTextFacet(props) {
+    const [textField, setTextField] = useState("");
     const [refresh, setRefresh] = useState(true);
 
-    function handleChange(e: React.FormEvent<HTMLInputElement>): void {
+    function handleChange(e) {
         setTextField(e.currentTarget.value);
     }
 
-    function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>): void {
+    function handleKeyPress(e) {
         if (e.key === 'Enter') {
             setTextFacet();
         }
@@ -26,8 +26,6 @@ function FreeTextFacet(props: {add: ISendCandidate}) {
     useEffect(() => {
         setTextField("");
     }, [refresh]);
-
-
 
     return (
         <div className="hcFacet">

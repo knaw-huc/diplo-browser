@@ -1,6 +1,8 @@
 import React from 'react';
 import App from './App';
 import Search from "./components/search";
+import Test from "./components/test";
+
 import ReactDOM from 'react-dom/client';
 import {useParams} from "react-router-dom";
 import Collections from "./components/collections";
@@ -11,7 +13,7 @@ import Detail from "./components/detail";
 
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root')
 );
 root.render(
     <BrowserRouter>
@@ -24,6 +26,9 @@ root.render(
                 <Route path="detail" element={<Detail/>}>
                     <Route path=":id" element={<Detail/>}/>
                 </Route>
+                <Route path="test" element={<Test/>}>
+                    {/* <Route path=":code" element={<TextSearch/>}/> */}
+                </Route>                      
                 
             </Route>
         </Routes>
